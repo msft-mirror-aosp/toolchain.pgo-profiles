@@ -62,6 +62,22 @@ class Benchmark(object):
         utils.run_llvm_profdata(profraws, output)
 
 
+class NativeExeBenchmark(Benchmark):
+
+    def apct_test_tag(self):
+        return 'apct/perf/pgo/profile-collector'
+
+    def profraw_files(self, profile_dir):
+        if self.name == 'hwui':
+            return [
+                'hwuimacro.profraw', 'hwuimacro_64.profraw',
+                'hwuimicro.profraw', 'hwuimicro_64.profraw',
+                'skia_nanobench.profraw', 'skia_nanobench_64.profraw'
+            ]
+        elif self.name == 'hwbinder':
+            return ['hwbinder.profraw', 'hwbinder_64.profraw']
+
+
 class APKBenchmark(Benchmark):
 
     def apct_test_tag(self):
@@ -81,6 +97,8 @@ class APKBenchmark(Benchmark):
 def BenchmarkFactory(benchmark_name):
     if benchmark_name == 'dex2oat':
         return APKBenchmark(benchmark_name)
+    elif benchmark_name in ['hwui', 'hwbinder']:
+        return NativeExeBenchmark(benchmark_name)
     else:
         raise RuntimeError('Unknown benchmark ' + benchmark_name)
 
@@ -94,7 +112,7 @@ def extract_profiles(build, test_tag, build_client, output_dir):
     zip_ref.close()
 
 
-KNOWN_BENCHMARKS = ['ALL', 'dex2oat']
+KNOWN_BENCHMARKS = ['ALL', 'dex2oat', 'hwui', 'hwbinder']
 
 
 def parse_args():
