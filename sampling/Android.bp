@@ -27,9 +27,6 @@ fdo_profile {
 fdo_profile {
     name: "libart",
     arch: {
-        arm: {
-            profile: "libart_arm.afdo",
-        },
         arm64: {
             profile: "libart_arm64.afdo",
         }
@@ -39,9 +36,6 @@ fdo_profile {
 fdo_profile {
     name: "libartbase",
     arch: {
-        arm: {
-            profile: "libartbase_arm.afdo",
-        },
         arm64: {
             profile: "libartbase_arm64.afdo",
         }
@@ -73,7 +67,11 @@ fdo_profile {
 
 fdo_profile {
     name: "libhwui",
-    profile: "libhwui.afdo",
+    arch: {
+        arm64: {
+            profile: "libhwui_arm64.afdo",
+        }
+    }
 }
 
 fdo_profile {
@@ -101,9 +99,6 @@ fdo_profile {
 fdo_profile {
     name: "linker",
     arch: {
-        arm: {
-            profile: "linker_arm.afdo",
-        },
         arm64: {
             profile: "linker_arm64.afdo",
         }
@@ -118,4 +113,21 @@ fdo_profile {
 fdo_profile {
     name: "surfaceflinger",
     profile: "surfaceflinger.afdo"
+}
+
+fdo_profile {
+    name: "libsqlite",
+    profile: "libsqlite.afdo",
+    native_bridge_supported: true,
+}
+
+fdo_profile {
+    name: "libcrypto",
+    profile: "libcrypto.afdo",
+    native_bridge_supported: true,
+}
+
+fdo_profile {
+    name: "server_configurable_flags",
+    profile: "server_configurable_flags.afdo"
 }
