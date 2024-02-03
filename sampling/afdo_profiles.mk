@@ -4,6 +4,7 @@
 # in a product config, has the ability to override it with custom profile
 AFDO_PROFILES += keystore2://toolchain/pgo-profiles/sampling:keystore2 \
 	libbinder://toolchain/pgo-profiles/sampling:libbinder \
+	libbinder_ndk://toolchain/pgo-profiles/sampling:libbinder_ndk \
 	libc++://toolchain/pgo-profiles/sampling:libc++ \
 	libgui://toolchain/pgo-profiles/sampling:libgui \
 	libhidlbase://toolchain/pgo-profiles/sampling:libhidlbase \
@@ -16,4 +17,7 @@ AFDO_PROFILES += keystore2://toolchain/pgo-profiles/sampling:keystore2 \
 	surfaceflinger://toolchain/pgo-profiles/sampling:surfaceflinger \
 	libart://toolchain/pgo-profiles/sampling:libart \
 	libartbase://toolchain/pgo-profiles/sampling:libartbase \
-	linker://toolchain/pgo-profiles/sampling:linker
+	linker://toolchain/pgo-profiles/sampling:linker \
+	libsqlite://toolchain/pgo-profiles/sampling:libsqlite \
+	libcrypto://toolchain/pgo-profiles/sampling:libcrypto \
+	server_configurable_flags://toolchain/pgo-profiles/sampling:server_configurable_flags
